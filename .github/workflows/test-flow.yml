@@ -1,8 +1,15 @@
-name: hello-world
+name: Jest Tests
 on: push
 jobs:
-  my-job:
+  tests:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
-        run: echo "Hello World!"
+      - uses: actions/checkout@v2
+      - name: Set up node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14"
+      - name: Install dependencies
+        run: npm install
+      - name: Run the tests
+        run: npm run test
